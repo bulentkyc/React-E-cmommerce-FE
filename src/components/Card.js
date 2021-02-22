@@ -7,21 +7,20 @@ let cardContent = {
 }
  */
 export default function (props) {
+    return (
+        <div className = "card">
+            <img 
+                src = {props.imgSrc}
+                alt = "Something went wrong! Please try again later."
+                title = "How's the scene"
+            />
+            <h3>{props.title}</h3> 
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim, distinctio facilis dolores ullam autem ad commodi.
+            </p>
+            <h4>Price: $200</h4> 
 
-return (
-    <div className = "card">
-        <img 
-            src = {props.imgSrc}
-            alt = "Something went wrong! Please try again later."
-            title = "How's the scene"
-        />
-        <h3>My Product</h3> 
-        <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim, distinctio facilis dolores ullam autem ad commodi.
-        </p>
-        <h4>Price: $200</h4> 
-
-        <h4>Add to Cart</h4> 
-    </div>
-);
+            <h4>Add to Cart</h4> 
+        </div>
+    );
 }
