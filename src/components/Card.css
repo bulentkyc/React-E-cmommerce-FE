@@ -1,0 +1,42 @@
+
+.card {
+    width: 200px;
+    height: 400px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 20px #777;
+    border-radius: 25px;
+    text-align: center;
+    float: left;
+}
+
+.card:nth-of-type(3n+2) {
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+.card > img {
+    width: 200px;
+    border-radius: 0;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+}
+
+.card > img {
+    width: 200px;
+    height: 150px;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+}
+
+.card > a {
+    text-decoration: none;
+    color: black;
+}
+
+.card > a > h4  {
+    width: 100px;
+    background-color: rgb(255, 150, 22);
+    border-radius: 5px;
+    margin: auto;
+}
