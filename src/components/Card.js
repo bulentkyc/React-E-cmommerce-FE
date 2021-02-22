@@ -18,7 +18,7 @@ export default function (props) {
             <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim, distinctio facilis dolores ullam autem ad commodi.
             </p>
-            <h4>Price: $200</h4> 
+            <h4>Price: ${props.price}</h4> 
 
             <h4>Add to Cart</h4> 
         </div>
