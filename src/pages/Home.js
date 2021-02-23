@@ -1,3 +1,4 @@
+import Banner from '../components/Banner';
 import Card from '../components/Card';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
@@ -75,8 +76,9 @@ export default function () {
         <div className="App">
             <Header/>
             <main className = "grid-container">
-            { cards }
+                { cards }
             </main>
+            <br/>
             <Footer/>
         </div>
     );
