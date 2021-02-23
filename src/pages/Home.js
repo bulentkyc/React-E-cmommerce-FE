@@ -1,6 +1,7 @@
 import Card from '../components/Card';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
+import './Home.css';
 /* 
 let titles = ['Iphone 13', 'Apple Set', 'Airpods', 'Figures', 'Dark Set', 'Dell' ];
 
@@ -69,13 +70,11 @@ let products = [
 
 export default function () {
     let cards = products.map( product => <Card price = {product.price} title = {product.title} imgSrc = {product.imgSrc}/> );
-    //
-    //
     
     return (
         <div className="App">
             <Header/>
-            <main>
+            <main className = "grid-container">
             { cards }
             </main>
             <Footer/>
