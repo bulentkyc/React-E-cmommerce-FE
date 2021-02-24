@@ -47,8 +47,8 @@ export default function (props) {
 
     return (
         <img
-            style = {rounded}
-            className = "banner"
+            style = {{...props.style, ...rounded}}
+            className = {"banner " + props.className}
             src = {props.source}
             alt = "Something went wrong! Please try again later."
             title = "How's the scene"

@@ -7,6 +7,10 @@ let cardContent = {
 }
  */
 export default function (props) {
+    let click = (message) => {
+        alert(message);
+    }
+
     return (
         <div className = "card">
             <img 
@@ -20,7 +24,8 @@ export default function (props) {
             </p>
             <h4>Price: ${props.price}</h4> 
 
-            <h4>Add to Cart</h4> 
+            <h4 onClick = {()=>click(props.price)} >Add to Cart</h4> 
         </div>
+            /*<h4 onClick = {click.bind(this, 'Burhanovic')} >Add to Cart</h4> */
     );
 }

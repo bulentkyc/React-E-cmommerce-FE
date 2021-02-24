@@ -3,3 +3,7 @@
     height: 30vw;
     object-fit: cover;
 }
+
+.opacity-50 {
+    opacity: 0.5;
+}
