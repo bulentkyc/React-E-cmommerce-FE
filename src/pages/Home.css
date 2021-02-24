@@ -1,20 +1,10 @@
 .grid-container {
     display: grid;
     grid-template-columns: auto;
-    gap: 2%;
     margin-top: 20px;
     margin-bottom: 30px;
 }
 
-@media (max-width: 600px) {
-    .grid-container {
-        grid-template-columns: auto;
-    }
-
-    footer {
-        margin-top: 150px;
-    }
-}
 
 @media (min-width: 600px) {
     .grid-container {
