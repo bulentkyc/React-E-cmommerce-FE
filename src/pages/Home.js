@@ -78,6 +78,7 @@ let products = [
 let cart = [];
 
 let click = (id) => {
+    /* 1. Way 
     let isUpdated = false;
     let products = cart.map(item => {
         if(item.id == id) {
@@ -93,8 +94,19 @@ let click = (id) => {
         cart.push({id, amount: 1});
     }
     console.log(cart);
-}
+     */
 
+    /* 2. Way */
+    let product = cart.find(item => item.id == id);
+    if (!product) {
+        cart.push({id, amount: 1});
+    } else {
+        product.amount += 1;
+        //We are not updating array again since items of array are object here!
+    }
+    //console.log(product, cart)
+}
+    
 export default function () {
     let cards = products.map( 
         product => <Card 
