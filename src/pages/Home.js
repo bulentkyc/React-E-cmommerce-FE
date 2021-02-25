@@ -38,39 +38,72 @@ export default function () {
 
 let products = [
     {
+        id: 'p1',
         title: 'Iphone 13',
         imgSrc: 'https://images.unsplash.com/photo-1512499617640-c74ae3a79d37?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=966&q=80',
         price: 12000
     },
     {
+        id: 'p2',
         title: 'Apple Set',
         imgSrc: 'https://images.unsplash.com/photo-1491933382434-500287f9b54b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=80',
         price: 3000
     },
     {
+        id: 'p3',
         title: 'Airpods',
         imgSrc: 'https://images.unsplash.com/photo-1516163109866-e9d98630a0a6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80',
         price: 200
     },
     {
+        id: 'p4',
         title: 'Figures',
         imgSrc: 'https://images.unsplash.com/photo-1572797258555-4f33f86f443f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1048&q=80',
         price: 100
     },
     {
+        id: 'p5',
         title: 'Dark Set',
         imgSrc: 'https://images.unsplash.com/photo-1550029402-226115b7c579?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=701&q=80',
         price: 5000
     },
     {
+        id: 'p6',
         title: 'Dell',
         imgSrc: 'https://images.unsplash.com/photo-1593642632505-1f965e8426e9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=925&q=80',
         price: 2000
     }
 ];
 
+let cart = [];
+
+let click = (id) => {
+    let isUpdated = false;
+    let products = cart.map(item => {
+        if(item.id == id) {
+            item.amount += 1;
+            isUpdated = true;
+        }
+        return item;
+    });
+
+    if (isUpdated) {
+        cart = products;
+    } else {
+        cart.push({id, amount: 1});
+    }
+    console.log(cart);
+}
+
 export default function () {
-    let cards = products.map( product => <Card price = {product.price} title = {product.title} imgSrc = {product.imgSrc}/> );
+    let cards = products.map( 
+        product => <Card 
+                    onclick = {()=>click(product.id)} 
+                    price = {product.price} 
+                    title = {product.title} 
+                    imgSrc = {product.imgSrc}
+                    /> 
+    );
     
     return (
         <div className="App">
