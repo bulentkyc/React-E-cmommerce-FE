@@ -40,7 +40,7 @@ import Footer from '../components/Footer';
 import Header from '../components/Header';
 import ProductList from '../components/ProductList';
 import './Home.css';
-import {useState} from 'react';
+import React, {useState} from 'react';
 
 let products = [
     {
@@ -150,12 +150,23 @@ export default function () {
         console.log(product, cart);
     }
 
+    let cartUpdateHandler = (id, newAmount) => {
+        if (newAmount > 0) {
+            let newCart = [...cart];
+            newCart.forEach(product => {
+                if(product.id == id) {
+                    product.amount = newAmount;
+                }
+            });
+            setCart(newCart);
+        }         
+    }
+
     return (
         <div className="App">
-            <Header/>
-            <ProductList
-                data = {cart}
-            />
+            <Header className = "myClass"/>
+            <header className = "myClass"></header>
+            <ProductList/>
             <main className = "grid-container">
                 { cards }
             </main>
