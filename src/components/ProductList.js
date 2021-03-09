@@ -3,6 +3,8 @@ import {useState} from 'react';
 
 export default function (props) {
 
+    
+/* 
     const [cart, setCart] = useState([{
         id: 'p6',
         title: 'Dell',
@@ -13,6 +15,8 @@ export default function (props) {
     }]);
 
     let cartUpdateHandler = (id, newAmount) => {
+        props.newCart.push('Andreas');
+        console.log(props.newCart);
         if (newAmount > 0) {
             let newCart = [...cart];
             newCart.forEach(product => {
@@ -22,9 +26,11 @@ export default function (props) {
             });
             setCart(newCart);
         }         
-    }
+    } */
 
-    let items = cart.map(item => {
+    /* let items = cart.map(item => { */
+
+    let items = props.data.map(item => {
     return (
         <li key = {item.id} className = "list">
             <img 
@@ -38,7 +44,7 @@ export default function (props) {
 
             <div>
                 <button 
-                    onClick = {()=>cartUpdateHandler(item.id, (item.amount + 1))}
+                    onClick = {()=>props.cartUpdate(item.id, (item.amount + 1))}
                 >
                     +
                 </button>
@@ -46,7 +52,7 @@ export default function (props) {
                 <h3>{item.amount}</h3>
 
                 <button 
-                    onClick = {()=>cartUpdateHandler(item.id, (item.amount - 1))}
+                    onClick = {()=>props.cartUpdate(item.id, (item.amount - 1))}
                 >
                     -
                 </button>

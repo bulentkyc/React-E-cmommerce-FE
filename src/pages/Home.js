@@ -34,13 +34,14 @@ export default function () {
  */
 
 
-
 import Card from '../components/Card';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import ProductList from '../components/ProductList';
 import './Home.css';
 import React, {useState} from 'react';
+
+let newCart = ['p6'];
 
 let products = [
     {
@@ -109,6 +110,12 @@ export default function () {
                     imgSrc = {product.imgSrc}
                     />
     );
+
+    let newClick = (id) => {
+        newCart.push(id);
+        console.log(newCart);
+    }
+
     /* onclick = {click.bind(this, product)}  */
     //console.log('cards', cards);
     //cart = '';
@@ -147,7 +154,7 @@ export default function () {
 
         /* 2. Way */
         
-        console.log(product, cart);
+        //console.log(product, cart);
     }
 
     let cartUpdateHandler = (id, newAmount) => {
@@ -162,11 +169,13 @@ export default function () {
         }         
     }
 
+
+    /* <ProductList newCart = {newCart}/> */
     return (
         <div className="App">
             <Header className = "myClass"/>
             <header className = "myClass"></header>
-            <ProductList/>
+            <ProductList data = {cart} cartUpdate = {cartUpdateHandler}/>
             <main className = "grid-container">
                 { cards }
             </main>
