@@ -1,9 +1,5 @@
-import Banner from '../components/Banner';
-import Card from '../components/Card';
-import Footer from '../components/Footer';
-import Header from '../components/Header';
-import ProductList from '../components/ProductList';
-import './Home.css';
+
+
 /* 
 let titles = ['Iphone 13', 'Apple Set', 'Airpods', 'Figures', 'Dark Set', 'Dell' ];
 
@@ -36,6 +32,15 @@ export default function () {
 }
 
  */
+
+
+
+import Card from '../components/Card';
+import Footer from '../components/Footer';
+import Header from '../components/Header';
+import ProductList from '../components/ProductList';
+import './Home.css';
+import {useState} from 'react';
 
 let products = [
     {
@@ -79,68 +84,72 @@ let products = [
         details: 'Lorem Ipsum ....',
         imgSrc: 'https://images.unsplash.com/photo-1593642632505-1f965e8426e9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=925&q=80',
         price: 2000
-    }
+    },
 ];
 
-let cart = [{
-    id: 'p5',
-    title: 'Dark Set',
-    details: 'Lorem Ipsum ....',
-    imgSrc: 'https://images.unsplash.com/photo-1550029402-226115b7c579?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=701&q=80',
-    price: 5000,
-    amount:5
-},
-{
-    id: 'p6',
-    title: 'Dell',
-    details: 'Lorem Ipsum ....',
-    imgSrc: 'https://images.unsplash.com/photo-1593642632505-1f965e8426e9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=925&q=80',
-    price: 2000,
-    amount:1
-}
-];
+//let cart = ;
 
-let click = (prod) => {
-    let product = cart.find(item => item.id == prod.id);
-    if (!product) {
-        cart.push({...prod, amount: 1});
-    } else {
-        product.amount += 1;
-        //We are not updating array again since items of array are object here!
-    }
-    /* 1. Way 
-    let isUpdated = false;
-    let products = cart.map(item => {
-        if(item.id == id) {
-            item.amount += 1;
-            isUpdated = true;
-        }
-        return item;
-    });
-
-    if (isUpdated) {
-        cart = products;
-    } else {
-        cart.push({id, amount: 1});
-    }
-    console.log(cart);
-     */
-
-    /* 2. Way */
-    
-    console.log(product, cart)
-}
-    
 export default function () {
+
+    const [cart, setCart] = useState([{
+        id: 'p6',
+        title: 'Dell',
+        details: 'Lorem Ipsum ....',
+        imgSrc: 'https://images.unsplash.com/photo-1593642632505-1f965e8426e9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=925&q=80',
+        price: 2000,
+        amount:3
+    }]);
+
     let cards = products.map( 
-        product => <Card 
-                    onclick = {()=>click(product)} 
+        product => <Card
+                    key = {product.id}
+                    onclick = {()=>click(product)}
                     price = {product.price} 
                     title = {product.title} 
                     imgSrc = {product.imgSrc}
-                    /> 
+                    />
     );
-    
+    /* onclick = {click.bind(this, product)}  */
+    //console.log('cards', cards);
+    //cart = '';
+    //console.log('setCart:', setCart)
+    let click = (prod) => {
+        let cartData = [...cart];
+        let product = cartData.find(item => item.id == prod.id);
+        if (!product) {
+            setCart([...cart,{...prod, amount: 1}]);
+            //cart.push({...prod, amount: 1});
+        } else {
+            product.amount += 1;
+            setCart(cartData);
+            //We are not updating array again since items of array are object here!
+        }
+
+        
+
+        /* 1. Way 
+        let isUpdated = false;
+        let products = cart.map(item => {
+            if(item.id == id) {
+                item.amount += 1;
+                isUpdated = true;
+            }
+            return item;
+        });
+
+        if (isUpdated) {
+            cart = products;
+        } else {
+            cart.push({id, amount: 1});
+        }
+        console.log(cart);
+        */
+
+        /* 2. Way */
+        
+        console.log(product, cart);
+    }
+
     return (
         <div className="App">
             <Header/>

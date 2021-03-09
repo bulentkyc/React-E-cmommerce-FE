@@ -26,7 +26,7 @@ export default function (props) {
 
     switch (props.rounded) {
     case 'top':
-        rounded = {...top}
+        rounded = top
         break;
 
     case 'bottom':

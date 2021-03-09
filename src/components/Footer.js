@@ -1,5 +1,6 @@
 import Banner from './Banner';
 import './Footer.css';
+import Message from './Message';
 
 export default function () {
     return (
@@ -9,7 +10,7 @@ export default function () {
             <p>
                 - 2020 -
             </p>
-            <h1 className="la">We're looking forward to see you again</h1>
+            <Message>We're looking forward to see you again</Message>
         </footer>
     );
 }

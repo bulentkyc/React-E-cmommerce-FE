@@ -1,11 +1,6 @@
 import logo from '../logo.svg';
 import './Card.css';
-/* 
-let cardContent = {
-    header: 'Hello World :))',
-    details: 'React elements are immutable. Once you create an element, you can’t change its children or attributes. An element is like a single frame in a movie: it represents the UI at a certain point in time.'
-}
- */
+
 export default function (props) {
     /* console.log(props.onclick); */
     return (
@@ -27,3 +22,10 @@ export default function (props) {
             /*<h4 onClick = {click.bind(this, 'Burhanovic')} >Add to Cart</h4> */
     );
 }
+
+/* 
+let cardContent = {
+    header: 'Hello World :))',
+    details: 'React elements are immutable. Once you create an element, you can’t change its children or attributes. An element is like a single frame in a movie: it represents the UI at a certain point in time.'
+}
+ */

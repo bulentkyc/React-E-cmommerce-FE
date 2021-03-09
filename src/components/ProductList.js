@@ -4,7 +4,7 @@ export default function (props) {
 
     let items = props.data.map(item => {
     return (
-        <li className = "list">
+        <li key = {item.id} className = "list">
             <img 
                 src = {item.imgSrc}
             />

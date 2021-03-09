@@ -1,11 +1,11 @@
 import Banner from './Banner';
 import './Header.css';
+import Message from './Message';
 
 export default function () {
     return (
     <header>
-        <h1 style = {{border: '2px solid purple'}} >Welcome on My Store</h1>
-
+        <Message>Welcome on My Store</Message>
         <Banner
             className = 'opacity-50'
             style = {{border: '2px solid purple'}}
@@ -20,5 +20,6 @@ export default function () {
 
 
 
+/*<h1 style = {{border: '2px solid purple'}} >Welcome on My Store</h1>*/
 
 
