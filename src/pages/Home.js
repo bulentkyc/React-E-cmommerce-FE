@@ -102,18 +102,18 @@ export default function () {
     let cards = products.map( 
         product => <Card
                     key = {product.id}
-                    onclick = {()=>newClick(product)}
+                    onclick = {()=>click(product)}
                     price = {product.price} 
                     title = {product.title} 
                     imgSrc = {product.imgSrc}
                     />
     );
-
+/* 
     let newClick = (prod) => {
         testObj = prod.id;
         console.log('home',testObj);
     }
-
+ */
     /* onclick = {click.bind(this, product)}  */
     //console.log('cards', cards);
     //cart = '';
@@ -172,7 +172,10 @@ export default function () {
     return (
         <div className="App">
             <Header className = "myClass"/>
-            <ProductList test = {testObj}/>
+            <ProductList
+                cart = {cart}
+                cartUpdateHandler = {cartUpdateHandler}
+            />
             <main className = "grid-container">
                 { cards }
             </main>
