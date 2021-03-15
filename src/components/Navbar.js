@@ -22,8 +22,8 @@ export default function (props) {
                 exact
                 className = "nav-item"
                 activeClassName="active" 
-                to = "/Contact"
-            >Contact</NavLink>
+                to = "/Cart"
+            >Cart</NavLink>
         </nav>
     );
 }

@@ -1,26 +1,41 @@
 import './App.css';
 import About from './pages/About';
 import Home from './pages/Home';
+import The404s from './pages/404';
 import {Switch, Route} from 'react-router-dom';
 import Navbar from './components/Navbar';
+import ProductList from './components/ProductList';
 
 function App() {
+
+  let mock = [{
+    id: 'p6',
+    title: 'Dell',
+    details: 'Lorem Ipsum ....',
+    imgSrc: 'https://images.unsplash.com/photo-1593642632505-1f965e8426e9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=925&q=80',
+    price: 2000,
+    amount:5
+}];
   
   return (
     <div>
             <Navbar/>
 
             <Switch>
-              <Route path='/About/Me'>
-                <Home/>
-              </Route>
-
               <Route path='/About'>
                 <About/>
               </Route>
 
-              <Route path='/'>
+              <Route path='/Cart'>
+                <ProductList cart = {mock}/>
+              </Route>
+
+              <Route exact path='/'>
                 <Home/>
+              </Route>
+
+              <Route path='/'>
+                <The404s/>
               </Route>
             </Switch>
       </div>
@@ -87,7 +102,7 @@ return (
 */
 
 
-/*7
+/*8
 
             <Link to="/Home">
               <button>Home</button>
@@ -96,5 +111,15 @@ return (
             <Link to="/About">
               <button>About</button>
             </Link>
+
+*/
+
+
+/*9
+
+              <Route path='/About/Me'>
+                <Home/>
+              </Route>
+
 
 */
