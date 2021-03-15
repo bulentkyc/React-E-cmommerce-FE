@@ -1,25 +1,16 @@
 import './App.css';
 import About from './pages/About';
 import Home from './pages/Home';
-import {useState} from 'react';
-import {Switch, Route, Link, BrowserRouter as Router} from 'react-router-dom';
+import {Switch, Route} from 'react-router-dom';
+import Navbar from './components/Navbar';
 
 function App() {
   
   return (
     <div>
-          <Router>
-
-            <Link to="/Home">
-              <button>Home</button>
-            </Link>
-
-            <Link to="/About">
-              <button>About</button>
-            </Link>
+            <Navbar/>
 
             <Switch>
-              
               <Route path='/About/Me'>
                 <Home/>
               </Route>
@@ -28,16 +19,10 @@ function App() {
                 <About/>
               </Route>
 
-              <Route path='/Home'>
-                <Home/>
-              </Route>
-
               <Route path='/'>
                 <Home/>
               </Route>
-              
-          </Switch>
-          </Router>
+            </Switch>
       </div>
     );
 
@@ -99,4 +84,17 @@ return (
       {activePage}
       </div>
     );
+*/
+
+
+/*7
+
+            <Link to="/Home">
+              <button>Home</button>
+            </Link>
+
+            <Link to="/About">
+              <button>About</button>
+            </Link>
+
 */
