@@ -41,7 +41,7 @@ import ProductList from '../components/ProductList';
 import './Home.css';
 import React, {useState} from 'react';
 
-export default function () {
+export default function (props) {
     let products = [
         {
             id: 'p1',
@@ -87,14 +87,15 @@ export default function () {
         },
     ];
 
-    const [cart, setCart] = useState([{
+    let cart = props.cart;
+    /* const [cart, setCart] = useState([{
         id: 'p6',
         title: 'Dell',
         details: 'Lorem Ipsum ....',
         imgSrc: 'https://images.unsplash.com/photo-1593642632505-1f965e8426e9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=925&q=80',
         price: 2000,
         amount:3
-    }]);
+    }]); */
 
     let cards = products.map( 
         product => <Card
@@ -119,11 +120,13 @@ export default function () {
         let cartData = [...cart];
         let product = cartData.find(item => item.id == prod.id);
         if (!product) {
-            setCart([...cart,{...prod, amount: 1}]);
+            //setCart([...cart,{...prod, amount: 1}]);
+            props.updater([...cart,{...prod, amount: 1}]);
             //cart.push({...prod, amount: 1});
         } else {
             product.amount += 1;
-            setCart(cartData);
+            //setCart(cartData);
+            props.updater(cartData);
             //We are not updating array again since items of array are object here!
         }
 
@@ -160,7 +163,7 @@ export default function () {
                     product.amount = newAmount;
                 }
             });
-            setCart(newCart);
+            props.updater(newCart);
         }         
     }
 
@@ -229,4 +232,8 @@ export default function () {
 }
 
 
+*/
+
+/*
+    <a href="#testME"> test me </a>
 */

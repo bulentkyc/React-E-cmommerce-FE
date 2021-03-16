@@ -24,6 +24,13 @@ export default function (props) {
                 activeClassName="active" 
                 to = "/Cart"
             >Cart</NavLink>
+            
+            <NavLink
+                exact
+                className = "nav-item"
+                activeClassName="active" 
+                to = "/Wishlist"
+            >Wish List</NavLink>
         </nav>
     );
 }

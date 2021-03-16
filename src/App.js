@@ -5,17 +5,38 @@ import The404s from './pages/404';
 import {Switch, Route} from 'react-router-dom';
 import Navbar from './components/Navbar';
 import ProductList from './components/ProductList';
+import {useState} from 'react';
 
 function App() {
+  console.log('App Rendered')
 
-  let mock = [{
+  const [cart, setCart] = useState([{
     id: 'p6',
     title: 'Dell',
     details: 'Lorem Ipsum ....',
     imgSrc: 'https://images.unsplash.com/photo-1593642632505-1f965e8426e9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=925&q=80',
     price: 2000,
-    amount:5
-}];
+    amount:1
+  }]);
+
+
+  let cartUpdateHandler = (item) => {
+    setCart([...item]);
+    console.log(item);
+  }
+
+  let cartAmountHandler = (id, newAmount) => {
+    if (newAmount > 0) {
+        let newCart = [...cart];
+        newCart.forEach(product => {
+            if(product.id == id) {
+                product.amount = newAmount;
+            }
+        });
+        setCart(newCart);
+    }         
+}
+
   
   return (
     <div>
@@ -27,11 +48,11 @@ function App() {
               </Route>
 
               <Route path='/Cart'>
-                <ProductList cart = {mock}/>
+                <ProductList cart = {cart} cartUpdateHandler = {cartAmountHandler}/>
               </Route>
 
               <Route exact path='/'>
-                <Home/>
+                <Home cart = {cart} updater = {cartUpdateHandler}/>
               </Route>
 
               <Route path='/'>

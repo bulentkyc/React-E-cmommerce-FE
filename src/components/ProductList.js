@@ -2,7 +2,9 @@ import './ProductList.css';
 import {useState, useEffect} from 'react';
 
 export default function (props) {
-
+    /* console.log('Product List rendered')
+    console.log(props.cart) */
+    
     let items = props.cart.map(item => {
     return (
         <li key = {item.id} className = "list">
