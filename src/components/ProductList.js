@@ -18,7 +18,7 @@ export default function (props) {
 
             <div>
                 <button 
-                    onClick = {()=>props.cartUpdateHandler(item.id, (item.amount + 1))}
+                    onClick = {()=>props.cartUpdateHandler(item, 'plus')}
                 >
                     +
                 </button>
@@ -26,7 +26,7 @@ export default function (props) {
                 <h3>{item.amount}</h3>
 
                 <button 
-                    onClick = {()=>props.cartUpdateHandler(item.id, (item.amount - 1))}
+                    onClick = {()=>props.cartUpdateHandler(item, 'minus')}
                 >
                     -
                 </button>

@@ -20,24 +20,27 @@ function App() {
   }]);
 
 
-  let cartUpdateHandler = (item) => {
-    setCart([...item]);
-    console.log(item);
+  let updater = (item, op) => {
+    let isUpdated = false;
+    let newCart = [...cart];
+    
+    newCart.forEach(prod => {
+      if (prod.id == item.id) {
+        isUpdated = true;
+        if (op == 'plus') {
+          prod.amount++;
+        } else if (op == 'minus' && prod.amount > 1){
+          prod.amount--;
+        }
+        
+      } 
+    });
+    if (isUpdated == false) {
+      newCart.push({...item, amount: 1});
+    }
+    setCart(newCart);
   }
 
-  let cartAmountHandler = (id, newAmount) => {
-    if (newAmount > 0) {
-        let newCart = [...cart];
-        newCart.forEach(product => {
-            if(product.id == id) {
-                product.amount = newAmount;
-            }
-        });
-        setCart(newCart);
-    }         
-}
-
-  
   return (
     <div>
             <Navbar/>
@@ -48,11 +51,17 @@ function App() {
               </Route>
 
               <Route path='/Cart'>
-                <ProductList cart = {cart} cartUpdateHandler = {cartAmountHandler}/>
+                <ProductList 
+                  cart = {cart} 
+                  cartUpdateHandler = {updater}
+                />
               </Route>
 
               <Route exact path='/'>
-                <Home cart = {cart} updater = {cartUpdateHandler}/>
+                <Home 
+                cart = {cart} 
+                updater = {updater}
+                />
               </Route>
 
               <Route path='/'>
@@ -144,3 +153,36 @@ return (
 
 
 */
+
+
+/*10 let cartAmountHandler = (id, newAmount) => {
+    if (newAmount > 0) {
+        let newCart = [...cart];
+        newCart.forEach(product => {
+            if(product.id == id) {
+                product.amount = newAmount;
+            }
+        });
+        setCart(newCart);
+    }         
+}*/
+
+
+/* 11
+  let cartUpdateHandler = (item, newAmount) => {
+    console.log(item,newAmount)
+    if(newAmount == undefined && item != undefined) {
+      setCart([...item]);
+    } else if (newAmount > 0) {
+      let newCart = [...cart];
+      newCart.forEach(product => {
+          if(product.id == item.id) {
+              product.amount = newAmount;
+          }
+      });
+      setCart(newCart);
+    }  
+    
+    console.log(item);
+  }
+ */

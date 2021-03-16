@@ -117,7 +117,9 @@ export default function (props) {
     //cart = '';
     //console.log('setCart:', setCart)
     let click = (prod) => {
-        let cartData = [...cart];
+        props.updater(prod, 'plus');
+
+        /* let cartData = [...cart];
         let product = cartData.find(item => item.id == prod.id);
         if (!product) {
             //setCart([...cart,{...prod, amount: 1}]);
@@ -128,8 +130,8 @@ export default function (props) {
             //setCart(cartData);
             props.updater(cartData);
             //We are not updating array again since items of array are object here!
-        }
-
+        } */
+    }
         
 
         /* 1. Way 
@@ -153,8 +155,8 @@ export default function (props) {
         /* 2. Way */
         
         //console.log(product, cart);
-    }
-
+    
+/* 
     let cartUpdateHandler = (id, newAmount) => {
         if (newAmount > 0) {
             let newCart = [...cart];
@@ -166,7 +168,7 @@ export default function (props) {
             props.updater(newCart);
         }         
     }
-
+ */
 
     /* <ProductList newCart = {newCart}/> */
     return (
@@ -174,7 +176,7 @@ export default function (props) {
             <Header className = "myClass"/>
             <ProductList
                 cart = {cart}
-                cartUpdateHandler = {cartUpdateHandler}
+                cartUpdateHandler = {props.updater}
             />
             <main className = "grid-container">
                 { cards }
